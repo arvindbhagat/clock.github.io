@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: rgb(38, 32, 32);
+        }
+        #clockcontainer{
+            position: relative;
+            width: 60vh;
+            height: 60vh;
+            margin: 100px auto;
+            background: url(clock.png) no-repeat;
+            background-size: cover;
+        }
+        #hour,#minute,#second{
+            position: absolute;
+            background-color: black;
+            border-radius: 10px;
+            transform-origin: bottom;
+            
+        }
+        #hour{
+            width: 2%;
+            height: 30%;
+            top: 20%;
+            left: 49%;
+            opacity: 0.8;
+            /* display: none; */
+            
+        }
+        #minute{
+            width: 2%;
+            height: 36%;
+            top: 15%;
+            left: 48.9%;
+            opacity: 0.8;
+            /* display: none; */
+        }
+        #second{
+            width: 1%;
+            height: 40%;
+            top: 12%;
+            left: 49.5%;
+            opacity: 0.8;
+            /* display: none; */
+        }
+        #date{
+            width: 65%;
+            height: 15%;
+            border: 2px solid rgb(255, 246, 246);
+            border-radius: 10px;
+            position: absolute;
+            top: 104%;
+            left: 17%;
+            color: aliceblue;
+            padding-top: 7px;
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="clockcontainer">
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+        <p id="date"></p>
+    </div>
+    <script>
+        let date = document.getElementById('date');
+        let d = new Date()
+        date.innerText = d.toDateString()
+        setInterval(function(){
+            let d = new Date();
+            let ht = d.getHours();
+            let mt = d.getMinutes();
+            let st = d.getSeconds();
+            let hrRotation = 30 * ht + mt/2;
+            let minRotation = 6 * mt;
+            let secRotation = 6 * st;
+
+            hour.style.transform = `rotate(${hrRotation}deg)`;
+            minute.style.transform = `rotate(${minRotation}deg)`;
+            second.style.transform = `rotate(${secRotation}deg)`;
+        },1000)
+    </script>
+</body>
+</html>
